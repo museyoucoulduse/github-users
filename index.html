@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html ng-app="lol" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--    The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags-->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link data-require="bootstrap@*" data-semver="4.0.0-alpha.2" rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css" />
+  <script data-require="bootstrap@*" data-semver="4.0.0-alpha.2" src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+  <script data-require="angular.js@*" data-semver="1.5.8" src="https://code.angularjs.org/1.5.8/angular.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+</head>
+
+<body ng-controller="MainCtrl">
+  <div class="contaner">
+
+    <div class="container">
+
+      <div class="container">
+        <h1 class="jumbotron">{{ message }}</h1>
+        <div>
+          <p>Looking for someone on Github?</p>
+          <div>
+            <p>{{ error }}</p>
+          </div>
+          <form name="searchUser" ng-submit="search(login)">
+            <input type="search" required placeholder="Find Github user" ng-model="login" />
+            <input type="submit" value="Search for user" />
+          </form>
+        </div>
+        <div>
+          <div>
+            <p>Github user <strong>{{ login }}</strong> from {{ data.created_at }}, last active: {{ data.updated_at }}</p>
+          </div>
+          <div class="row">
+            <div class="col-xs-4">
+              <img heigth="80" width="80" ng-src="{{ data.avatar_url }}" title="{{ data.login }}" />
+            </div>
+            <div class="col-xs-8">
+              <h4>Name:</h4>
+              <p>{{ data.name }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <p class="col-xs-12">...</p>
+          </div>
+          <div class="row">
+            <div class="col-xs-3">
+              <h4>Bio:</h4>
+              <p>{{ data.bio }}</p>
+            </div>
+            <div class="col-xs-9">
+              <table>
+                <thead>
+                  <tr>
+                    <th>
+                      Name
+                    </th>
+                    <th>
+                      Stars
+                    </th>
+                    <th>
+                      Forks
+                    </th>
+                    <th>
+                      Language
+                    </th>
+                  </tr>
+
+                </thead>
+                <tbody>
+                  <tr ng-repeat="repo in repos">
+                    <td>
+                      {{ repo.name }}
+                    </td>
+                    <td>
+                      {{ repo.stars }}
+                    </td>
+                    <td>
+                      {{ repo.forks }}
+                    </td>
+                    <td>
+                      {{ repo.language }}
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
