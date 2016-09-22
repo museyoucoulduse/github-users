@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  var MainCtrl = function ($scope, $http) {
+  var MainCtrl = function ($scope, $http, $filter) {
 
     $scope.message = "Hallo, Big Boss!";
 
@@ -22,9 +22,25 @@
       $http.get($scope.data.repos_url.toString()).then(onReposResponse, onError);
     }
 
-    // It's me!
-    $http.get('https://api.github.com/users/museyoucoulduse')
-      .then(onUserResponse, onError)
+    var changer = false;
+    var description = function (repo) {
+      if (
+        changer == false) {
+        return true;
+        changer = true;
+      } else if (
+        changer == true) {
+        return false;
+        changer = false;
+      }
+      $scope.description = repo.description
+    };
+
+
+
+//    // It's me!
+//    $http.get('https://api.github.com/users/museyoucoulduse')
+//      .then(onUserResponse, onError)
 
     // Who else can do the job better?
     $scope.search = function (login) {
@@ -32,7 +48,7 @@
     };
   };
 
-  MainCtrl.$inject = ['$scope', '$http'];
+  MainCtrl.$inject = ['$scope', '$http', '$filter'];
   angular.module('lol', []).controller('MainCtrl', MainCtrl);
 
 })();
