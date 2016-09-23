@@ -1,0 +1,52 @@
+{
+  "name": "github-personas",
+  "description": "Find information about particular github user",
+  "main": "index.js",
+  "authors": [
+    "Simon Blaszczynski"
+  ],
+  "license": "AGPL-3.0",
+  "keywords": [
+    "github",
+    "user",
+    "users"
+  ],
+  "homepage": "https://github.com/museyoucoulduse/github-users",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "4",
+    "font-awesome": "^4.6.3"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^3.0.2"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.min.js",
+        "scss/bootstrap.scss",
+        "dist/css/bootstrap.min.css"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "less/font-awesome.less",
+        "scss/font-awesome.scss",
+        "css/font-awesome.min.css"
+      ]
+    },
+    "expect.js": {
+      "main": [
+        "index.js"
+      ]
+    }
+  }
+}

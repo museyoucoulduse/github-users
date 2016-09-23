@@ -6,8 +6,7 @@
     .controller('PersonaSearchController', PersonaSearchController)
     .controller('PersonasShowController', PersonasShowController)
     .controller('PersonaAddController', PersonaAddController)
-    .factory('githubFactory', githubFactory)
-    //    .factory('githubRepoFactory', githubRepoFactory);
+    .factory('githubFactory', githubFactory);
 
   PersonaSearchController.$inject = ['Personas', 'githubFactory'];
 
@@ -17,14 +16,16 @@
 
     person.username = 'museyoucoulduse';
 
+
     console.log('instatiate')
     person.onError = function (err) {
-      person.error = err.message;
-      console.log(err.message);
+      person.error = err.statusText;
+      console.log(err.statusText);
     };
 
     person.onUserResponse = function (data) {
       person.user = data;
+      person.error = null;
       console.log(person.user);
       github.getRepos(person.user).then(person.onReposResponse, person.onError);
     };
@@ -51,6 +52,10 @@
 
   function PersonasShowController(Personas) {
     var showPersons = this
+    showPersons.clicked = false;
+    showPersons.email = function () {
+      showPersons.clicked = true;
+    }
     console.log('getting array of persons');
     showPersons.personas = Personas.getPersonas();
 
@@ -107,7 +112,7 @@
         score: score,
         data: data
       };
-      personas.push(persona);
+      personas.unshift(persona);
       console.log('added person');
     };
 

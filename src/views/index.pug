@@ -1,0 +1,23 @@
+extends layout.pug
+
+block title
+  title Github Personas
+  
+block header
+  .jumbotron
+    h2 Hey, Big Boss!
+    h4 Looking for someone on Github?
+  div(ng-controller='PersonaSearchController as person')
+  
+    div.alert.alert-danger(role="alert", ng-if="person.error")
+      p {{person.error}}
+      
+    form(name="search", ng-submit="person.search()")
+      input(type="search", required, value="museyoucoulduse", ng-model="person.username")
+      input(type="submit", value="Search for user", class='btn btn-large btn-primary')
+      
+    hr
+    
+    include persona.pug
+  
+  

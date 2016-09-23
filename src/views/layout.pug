@@ -1,0 +1,33 @@
+doctype html
+html(ng-app='lol' lang='en')
+  head
+    meta(charset="utf-8")
+    <!--     bower:css-->
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../../bower_components/mocha/mocha.css" />
+    <!--     endbower-->
+        //- inject:css
+        //- endinject
+    <!--     bower:js-->
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="../../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../../bower_components/tether/dist/js/tether.js"></script>
+    <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../bower_components/expect.js/index.js"></script>
+    <script src="../../bower_components/mocha/mocha.js"></script>
+    <!--     endbower-->
+    //- inject:js
+    script(src="/js/script.js")
+    //- endinject
+    
+block title
+  title Lots of Lulz
+body
+  .container
+    block header
+   
+  date
+  p.container Copyrights &copy; Szymon Blasczynski 2016
+    
+                             

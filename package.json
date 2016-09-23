@@ -4,7 +4,7 @@
   "description": "Find information about particular github user",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha -R spec",
     "start": "node index"
   },
   "repository": {
@@ -24,10 +24,22 @@
   "homepage": "https://github.com/museyoucoulduse/github-users#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "bower": "^1.7.9",
     "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-inject": "^4.1.0",
+    "gulp-nodemon": "^2.1.0",
     "mocha": "^3.0.2",
     "morgan": "^1.7.0",
+    "nodemon": "^1.10.2",
     "pug": "^2.0.0-beta6",
-    "sexjs": "^1.0.0"
+    "sexjs": "^1.0.0",
+    "wiredep": "^4.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2",
+    "selenium-binaries": "^0.8.0",
+    "selenium-webdriver": "^3.0.0-beta-3"
   }
 }
