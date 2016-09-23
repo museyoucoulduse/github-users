@@ -3,11 +3,11 @@
   'use strict';
   //  MainCtrl.$inject = [ 'github'];
   angular.module('lol', [])
-    .service('GithubPersonasService', GithubPersonasService)
     .controller('PersonaSearchController', PersonaSearchController)
     .controller('PersonasShowController', PersonasShowController)
     .controller('PersonaAddController', PersonaAddController)
-    .factory('githubFactory', githubFactory);
+    .factory('githubFactory', githubFactory)
+    .service('GithubPersonasService', GithubPersonasService);
   //    .factory('githubRepoFactory', githubRepoFactory);
 
   PersonaSearchController.$inject = ['GithubPersonasService', 'githubFactory'];
@@ -45,7 +45,7 @@
     };
 
     person.addPersona = function () {
-      GithubPersonasService.addPerson(person.user.login, person.repos, 0)
+      GithubPersonasService.addPerson(person.user.login, person.repos, 0, person.data)
     };
   };
 
@@ -53,8 +53,9 @@
 
   function PersonasShowController() {
     var showPersons = this
+    var githubPersonas = new GithubPersonasService;
 
-    showPersons.personas = GithubPersonasService.personas;
+    showPersons.personas = githubPersonas.getPersonas();
 
     showPersons.removePersona = function (index) {
       GithubPersonasService.removePerson(index);
@@ -69,9 +70,10 @@
     personasAdder.login = '';
     personasAdder.repos = '';
     personasAdder.score = 0;
+    personasAdder.data = {}
 
     personasAdder.addPersona = () => {
-      GithubPersonasService.addPerson(personasAdder.login, personasAdder.repos, personasAdder.score);
+      GithubPersonasService.addPerson(personasAdder.login, personasAdder.repos, personasAdder.score, personasAdder.data);
     };
   };
 
@@ -80,23 +82,25 @@
 
     var personas = []
 
-    service.addPerson = (login, repos, score) => {
+    service.addPerson = (login, repos, score, data) => {
       var persona = {
         login: login,
         repos: repos,
-        score: score
+        score: score,
+        data: data
       };
       personas.push(persona);
     };
 
-    service.getPersonas = function () {
-      console.log('reaching for people')
+    this.getPersonas = function () {
+      console.log('reaching for people');
       return personas;
     };
 
     service.removePerson = function (index) {
       parsonas.splice(index, 1)
     }
+
     return service;
   };
 

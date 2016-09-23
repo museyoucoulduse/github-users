@@ -33,7 +33,95 @@
             <input type="submit" value="Search for user" class='btn btn-large btn-primary' />
           </form>
         </div>
-        <div class="container" ng-include="'./userinfo.html'" ng-controller='PersonasShowController as showPersons'></div>
+
+
+        <div class="container" ng-controller="PersonasShowController as showPersons">
+          <div ng-repeat="persona in showPersons.personas">
+            <div class="row">
+              <div class="col-xs-3">
+                <img heigth="80" width="80" ng-src="{{ persona.avatar_url }}" title="{{ persona.login }}" id="personaData" />
+              </div>
+              <div class="col-xs-5">
+                <h4>Name</h4>
+                <p>{{ persona.name }}</p>
+                <h4>Blog</h4>
+                <p><a href="{{ persona.blog }}">{{ persona.blog }}</a></p>
+                <h4>Email</h4>
+                <p><a href="{{ persona.email }}">{{ persona.email }}</a></p>
+                <h4>Location</h4>
+                <p>{{ persona.location }}</p>
+              </div>
+              <div ng-show="persona.hireable" class="4" ng-mouseover="class='btn-lage'">
+                <!--      //change proprties of button :)-->
+                <buttton type="button" class="btn btn-primary">Hire Me!</buttton>
+              </div>
+            </div>
+            <div class="row">
+              <p class="col-xs-12">...</p>
+            </div>
+            <div class="row">
+              <div class="col-xs-3">
+                <h4>Bio:</h4>
+                <p>{{ persona.bio }}</p>
+              </div>
+              <div class="col-xs-9">
+                <p>
+                  Order
+                  <select ng-model="repoSortOrder">
+                    <option value='+name'>By name</option>
+                    <option value='-stargazers_count'>By stars</option>
+                    <option value='+language'>By code language</option>
+                    <option value='+fork'>Is forked?</option>
+                  </select>
+                </p>
+                <table class="table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        Name
+                      </th>
+                      <th>
+                        Stars
+                      </th>
+                      <th>
+                        Forked?
+                      </th>
+                      <th>
+                        Language
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr ng-repeat="repo in repos | orderBy:repoSortOrder">
+                      <td ng-click="description(repo)">
+                        {{ repo.name }}
+                      </td>
+                      <td>
+                        {{ repo.stargazers_count | number }}
+                      </td>
+                      <td>
+                        {{ repo.fork }}
+                      </td>
+                      <td>
+                        {{ repo.language }}
+                      </td>
+                    </tr>
+                    <tr ng-show="changer">
+                      <td>{{ description }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <button type="button" class="btn btn-large btn-danger" ng-click="showPersonas.removePersona($index)">Remove Persona</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
       </div>
     </div>
   </div>
