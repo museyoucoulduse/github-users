@@ -42,8 +42,8 @@
     };
 
     person.addPersona = function () {
-      console.log('adding persona');
-      Personas.addPerson(person.user.login, person.repos, 0, person.data)
+      console.log(`Adding person with data ${person.user.login} ${person.repos} and ${person.user}`);
+      Personas.addPerson(person.user.login, person.repos, 0, person.user)
     };
   };
 
@@ -65,7 +65,7 @@
     var personasAdder = this;
 
     personasAdder.login = '';
-    personasAdder.repos = '';
+    personasAdder.repos = [];
     personasAdder.score = 0;
     personasAdder.data = {}
 

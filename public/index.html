@@ -39,21 +39,21 @@
           <div ng-repeat="persona in showPersons.personas">
             <div class="row">
               <div class="col-xs-3">
-                <img heigth="80" width="80" ng-src="{{ persona.avatar_url }}" title="{{ persona.login }}" id="personaData" />
+                <img heigth="80" width="80" ng-src="{{ persona.data.avatar_url }}" title="{{ persona.login }}" id="personaData" />
+                <div ng-show="persona.data.hireable" class="4" ng-mouseover="class='btn-lage'">
+                  <!--      //change proprties of button :)-->
+                  <buttton type="button" class="btn btn-primary">Hire Me!</buttton>
+                </div>
               </div>
               <div class="col-xs-5">
                 <h4>Name</h4>
-                <p>{{ persona.name }}</p>
+                <p>{{ persona.data.name }}</p>
                 <h4>Blog</h4>
-                <p><a href="{{ persona.blog }}">{{ persona.blog }}</a></p>
+                <p><a href="{{ persona.blog }}">{{ persona.data.blog }}</a></p>
                 <h4>Email</h4>
-                <p><a href="{{ persona.email }}">{{ persona.email }}</a></p>
+                <p><a href="{{ persona.email }}">{{ persona.data.email }}</a></p>
                 <h4>Location</h4>
-                <p>{{ persona.location }}</p>
-              </div>
-              <div ng-show="persona.hireable" class="4" ng-mouseover="class='btn-lage'">
-                <!--      //change proprties of button :)-->
-                <buttton type="button" class="btn btn-primary">Hire Me!</buttton>
+                <p>{{ persona.data.location }}</p>
               </div>
             </div>
             <div class="row">
@@ -62,7 +62,7 @@
             <div class="row">
               <div class="col-xs-3">
                 <h4>Bio:</h4>
-                <p>{{ persona.bio }}</p>
+                <p>{{ persona.data.bio }}</p>
               </div>
               <div class="col-xs-9">
                 <p>
@@ -93,7 +93,7 @@
                   </thead>
 
                   <tbody>
-                    <tr ng-repeat="repo in showPersons.repos | orderBy:repoSortOrder">
+                    <tr ng-repeat="repo in persona.repos | orderBy:repoSortOrder">
                       <td ng-click="description(repo)">
                         {{ repo.name }}
                       </td>
