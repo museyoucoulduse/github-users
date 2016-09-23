@@ -1,0 +1,33 @@
+{
+  "name": "github-users",
+  "version": "0.0.1",
+  "description": "Find information about particular github user",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/museyoucoulduse/github-users.git"
+  },
+  "keywords": [
+    "github",
+    "user",
+    "users"
+  ],
+  "author": "Simon Blaszczynski",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/museyoucoulduse/github-users/issues"
+  },
+  "homepage": "https://github.com/museyoucoulduse/github-users#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mocha": "^3.0.2",
+    "morgan": "^1.7.0",
+    "pug": "^2.0.0-beta6",
+    "sexjs": "^1.0.0"
+  }
+}

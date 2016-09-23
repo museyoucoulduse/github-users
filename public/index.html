@@ -93,7 +93,7 @@
                   </thead>
 
                   <tbody>
-                    <tr ng-repeat="repo in repos | orderBy:repoSortOrder">
+                    <tr ng-repeat="repo in showPersons.repos | orderBy:repoSortOrder">
                       <td ng-click="description(repo)">
                         {{ repo.name }}
                       </td>
@@ -107,12 +107,9 @@
                         {{ repo.language }}
                       </td>
                     </tr>
-                    <tr ng-show="changer">
-                      <td>{{ description }}</td>
-                    </tr>
                   </tbody>
                 </table>
-                <button type="button" class="btn btn-large btn-danger" ng-click="showPersonas.removePersona($index)">Remove Persona</button>
+                <button type="button" class="btn btn-large btn-danger" ng-click="showPersons.removePersona($index)">Remove Persona</button>
               </div>
             </div>
           </div>
