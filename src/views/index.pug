@@ -14,8 +14,12 @@ block header
       
     .well.well-lg
       form(name="search", ng-submit="person.search()")
-        input(type="search", required, value="museyoucoulduse", ng-model="person.username")
-        input(type="submit", value="Search for user", class='btn btn-large btn-primary')
+        div(class="input-group")
+          span(class="input-group-addon", id="basic-addon1") @
+          input(type="text", aria-describedby="basic-addon1", class="form-control", required, value="museyoucoulduse", ng-model="person.username")
+          span(class="input-group-addon", id="basic-addon1")
+            i(class="fa fa-search" aria-hidden="true")
+        input(type="submit", value="Search for Github user", class='btn btn-large btn-primary fa fa-search' id="search")
       
     hr
     

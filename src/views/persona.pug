@@ -12,16 +12,21 @@
           buttton.btn.btn-success(type='button' ng-click="showPersons.email()") Hire Me!              
       .col-xs-5
         h5 Name              
-        p {{ persona.data.name }}             
-        h5 Blog          
+        p {{ persona.data.name }}
+        #org(ng-if="persona.data.company")
+          h5 Organization
+          p {{ persona.data.company}}
+
+        p Freelancer
+        h5 Website
         p
-          a(href='http://{{ persona.data.blog }}') {{ persona.data.blog }}              
+          a(href='http://{{ persona.data.blog }}') {{ persona.data.blog }}
         div(ng-if="showPersons.clicked")
           h5 Email           
-            p
-              a(href='mailto:{{ persona.data.email }}') {{ persona.data.email }}            
+          p
+            a(href='mailto:{{ persona.data.email }}') {{ persona.data.email }}
         h5 Location            
-        p {{ persona.data.location }}  
+        p {{ persona.data.location }}
     .row
       hr.col-xs-12
     .row
@@ -39,19 +44,19 @@
           thead
             tr
               th Name                    
-              th Stars                     
+              th Language
               th Forked?                    
-              th Language                
+              th Stars
           tbody
             tr(ng-repeat='repo in persona.repos | orderBy:repoSortOrder')
               td
-                a(href="{{repo.html_url}}") {{ repo.name }} &nbsp;
                 button(class="btn btn-sx", type="button", data-toggle="collapse", data-target="#{{repo.name}}", aria-expanded="false", aria-controls="{{repo.name}}")
-                  i(class="fa fa-info-circle fa-x2", aria-hidden="true")
+                  i(class="fa fa-info-circle fa-x2", aria-hidden="true") &nbsp;
+                a(href="{{repo.html_url}}") {{ repo.name }}
                 div.collapse(id='{{repo.name}}')
                   .well {{ repo.description }}
-              td {{ repo.stargazers_count | number }}
-              td {{ repo.fork }}                 
               td {{ repo.language }}
+              td {{ repo.fork }}
+              td {{ repo.stargazers_count | number }}
         button.btn.btn-large.btn-danger(type='button', ng-click='showPersons.removePersona($index)') Remove Persona
         hr
