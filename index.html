@@ -13,31 +13,27 @@
   <script data-require="angular.js@*" data-semver="1.5.8" src="https://code.angularjs.org/1.5.8/angular.js"></script>
   <link rel="stylesheet" href="style.css" />
   <script src="script.js"></script>
+  <script src="github.js"></script>
 </head>
 
-<body ng-controller="MainCtrl">
+<body>
   <div class="contaner">
 
     <div class="container">
 
       <div class="container">
-        <h1 class="jumbotron">{{ message }}</h1>
-        <div>
+        <h1 class="jumbotron">Hallo, Big Boss!</h1>
+        <div ng-controller='PersonaSearchController as person'>
           <p>Looking for someone on Github?</p>
-          <div>
-            <p>{{ error }}</p>
+          <div ng-show="person.error">
+            <p>{{ person.error }}</p>
           </div>
-          <form name="searchUser" ng-submit="search(login)">
-            <input type="search" required placeholder="Find Github user" ng-model="login" />
-            <input type="submit" value="Search for user" />
+          <form name="search" ng-submit="person.search()">
+            <input type="search" required value="museyoucoulduse" ng-model="person.username" />
+            <input type="submit" value="Search for user" class='btn btn-large btn-primary' />
           </form>
         </div>
-        <div class="container" ng-include="'userinfo.html'" ng-show="data">
-
-
-
-
-        </div>
+        <div class="container" ng-include="'./userinfo.html'" ng-controller='PersonasShowController as showPersons'></div>
       </div>
     </div>
   </div>
