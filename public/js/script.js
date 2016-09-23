@@ -56,6 +56,9 @@
     showPersons.email = function () {
       showPersons.clicked = true;
     }
+    showPersons.desc = function () {
+      return true
+    }
     console.log('getting array of persons');
     showPersons.personas = Personas.getPersonas();
 

@@ -4,7 +4,7 @@
   div(ng-repeat='persona in showPersons.personas')
     .row
       .col-xs-3
-        img#personaData(heigth='100', width='100', ng-src='{{ persona.data.avatar_url }}', title='{{ persona.login }}')
+        img.thumbnail#personaData(heigth='100', width='100', ng-src='{{ persona.data.avatar_url }}', title='{{ persona.login }}')
         br
         br
         div(ng-show='persona.data.hireable')
@@ -44,10 +44,14 @@
               th Language                
           tbody
             tr(ng-repeat='repo in persona.repos | orderBy:repoSortOrder')
-              td 
-                a(href="{{repo.html_url}}") {{ repo.name }}
+              td
+                a(href="{{repo.html_url}}") {{ repo.name }} &nbsp;
+                button(class="btn btn-sx", type="button", data-toggle="collapse", data-target="#{{repo.name}}", aria-expanded="false", aria-controls="{{repo.name}}")
+                  i(class="fa fa-info-circle fa-x2", aria-hidden="true")
+                div.collapse(id='{{repo.name}}')
+                  .well {{ repo.description }}
               td {{ repo.stargazers_count | number }}
               td {{ repo.fork }}                 
-              td {{ repo.language }}             
+              td {{ repo.language }}
         button.btn.btn-large.btn-danger(type='button', ng-click='showPersons.removePersona($index)') Remove Persona
         hr
