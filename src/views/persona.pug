@@ -18,8 +18,8 @@
           #org(ng-if="persona.data.company")
             h5 Organization
             p {{ persona.data.company}}
-
-          p Freelancer
+          #freelancer(ng-if="persona.data.company == null")
+            p Freelancer
           h5 Website
           p
             a(href='http://{{ persona.data.blog }}') {{ persona.data.blog }}
@@ -29,6 +29,8 @@
               a(href='mailto:{{ persona.data.email }}') {{ persona.data.email }}
           h5 Location            
           p {{ persona.data.location }}
+          h5 Contrib
+          p {{ persona.data.contributions }}
       .row
         hr.col-xs-12
       .row

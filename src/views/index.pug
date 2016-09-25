@@ -20,7 +20,9 @@ block header
           span(class="input-group-addon", id="basic-addon1")
             i(class="fa fa-search" aria-hidden="true")
         input(type="submit", value="Search for Github user", class='btn btn-large btn-primary fa fa-search' id="search")
-      
+      button(class="btn btn-success", ng-click="person.hallOfFame()") Hall Of OpenSource Fame &nbsp;
+        i(class="fa fa-birthday-cake" aria-hidden="true")
+           
     hr.col-xs-12
     
     include persona.pug

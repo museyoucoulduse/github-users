@@ -33,7 +33,6 @@
     "morgan": "^1.7.0",
     "nodemon": "^1.10.2",
     "pug": "^2.0.0-beta6",
-    "sexjs": "^1.0.0",
     "wiredep": "^4.0.0"
   },
   "devDependencies": {

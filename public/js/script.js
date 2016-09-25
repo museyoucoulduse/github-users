@@ -8,9 +8,9 @@
     .controller('PersonaAddController', PersonaAddController)
     .factory('githubFactory', githubFactory);
 
-  PersonaSearchController.$inject = ['Personas', 'githubFactory'];
+  PersonaSearchController.$inject = ['$q', 'Personas', 'githubFactory'];
 
-  function PersonaSearchController(Personas, githubFactory) {
+  function PersonaSearchController($q, Personas, githubFactory) {
     var person = this;
     var github = githubFactory;
 
@@ -46,7 +46,51 @@
       console.log(`Adding person with data ${person.user.login} ${person.repos} and ${person.user}`);
       Personas.addPerson(person.user.login, person.repos, 0, person.user)
     };
-  };
+
+    function shuffle(array) {
+      var currentIndex = array.length, temporaryValue, randomIndex;
+
+      // While there remain elements to shuffle...
+      while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+
+      return array;
+    }
+
+    
+    person.hallOfFame = () => {
+      var hallOfFame = [
+        'lattner',
+        'BjarneStroustrup',
+        'rlerdorf',
+        'TimToady',
+        'ViralBShah',
+        'StefanKarpinski',
+        'JeffBezanson',
+        'alanedelman',
+        'matz',
+        'dhh',
+        'jeresig',
+        'gvanrossum',
+        'roberto-ieru',
+        'torvalds',
+        'brammool'
+      ]
+      shuffle(hallOfFame);
+      
+      github.getUser(hallOfFame[1]).then(person.onUserResponse, person.onError);;
+     
+    };
+  }
 
   PersonasShowController.$inject = ['Personas']
 
