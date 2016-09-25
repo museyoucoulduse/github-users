@@ -23,12 +23,12 @@ router.route('/')
 
 app.use('/', router);
 
-var port = process.env.PORT || 3000;
-var hostname = process.env.IP || 'localhost';
+var port = process.env.PORT || 5000;
+//var hostname = process.env.IP || 'localhost';
 app.listen(port, hostname, function (err) {
   if (err) {
     console.log(err.message);
     process.exit(1);
   }
-  console.log(`Server ${sex.neuter} is running at http://${hostname}:${port}`);
+  console.log(`Server ${sex.neuter} is running at http://gusers.herokuapp.com:${port}`);
 });
