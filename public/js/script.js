@@ -63,6 +63,7 @@
     showPersons.personas = Personas.getPersonas();
 
     showPersons.removePersona = function (index) {
+      
       Personas.removePerson(index);
     }
   };
@@ -88,16 +89,18 @@
     factory.getRepos = function (user) {
       return $http.get(user.repos_url)
         .then(function (res) {
-          return res.data;
           console.log('Retrived repo user data');
+          return res.data;
+          
         });
     }
 
     factory.getUser = function (login) {
       return $http.get('https://api.github.com/users/' + login)
         .then(function (res) {
-          return res.data;
           console.log('Retrieved user data');
+          return res.data;
+          
         });
     }
     return factory;
@@ -115,8 +118,20 @@
         score: score,
         data: data
       };
-      personas.unshift(persona);
-      console.log('added person');
+      var found = false;
+      for(var i = 0; i < personas.length; i++) {
+        if (personas[i].login == persona.login) {
+          found = true;
+          break;
+        }
+          
+      }
+      if (!found) {
+          personas.unshift(persona);
+          console.log('added person');
+      }
+
+      
     };
 
     service.getPersonas = function () {

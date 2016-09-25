@@ -55,4 +55,6 @@ bower_components
 # Brackets
 .brackets.json
 
-
+# VS Code
+.vscode
+jsconfig.json

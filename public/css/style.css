@@ -1,0 +1,15 @@
+hr {
+    border: none;
+    height: 3px;
+    /* Set the hr color */
+    color: #626; /* old IE */
+    background-color: #626; /* Modern Browsers */
+}
+.jumbotron {
+  background-color: #626;
+  color: #FFF;
+  
+}
+.jumbotron h4 {
+    color: #368;
+  }

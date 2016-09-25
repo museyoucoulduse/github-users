@@ -2,61 +2,70 @@
 
 .container(ng-controller='PersonasShowController as showPersons')
   div(ng-repeat='persona in showPersons.personas')
-    .row
-      .col-xs-3
-        img.thumbnail#personaData(heigth='100', width='100', ng-src='{{ persona.data.avatar_url }}', title='{{ persona.login }}')
-        br
-        br
-        div(ng-show='persona.data.hireable')
-          // //change proprties of button :)
-          buttton.btn.btn-success(type='button' ng-click="showPersons.email()") Hire Me!              
-      .col-xs-5
-        h5 Name              
-        p {{ persona.data.name }}
-        #org(ng-if="persona.data.company")
-          h5 Organization
-          p {{ persona.data.company}}
+    hr
+    .div(id='{{ persona.data.login }}')
+      .row
+        .col-xs-3
+          img.thumbnail#personaData(heigth='100', width='100', ng-src='{{ persona.data.avatar_url }}', title='{{ persona.login }}')
+          br
+          br
+          div(ng-show='persona.data.hireable')
+            // //change proprties of button :)
+            buttton.btn.btn-success(type='button' ng-click="showPersons.email()") Hire Me!              
+        .col-xs-5
+          h5 Name              
+          p {{ persona.data.name }}
+          #org(ng-if="persona.data.company")
+            h5 Organization
+            p {{ persona.data.company}}
 
-        p Freelancer
-        h5 Website
-        p
-          a(href='http://{{ persona.data.blog }}') {{ persona.data.blog }}
-        div(ng-if="showPersons.clicked")
-          h5 Email           
+          p Freelancer
+          h5 Website
           p
-            a(href='mailto:{{ persona.data.email }}') {{ persona.data.email }}
-        h5 Location            
-        p {{ persona.data.location }}
-    .row
-      hr.col-xs-12
-    .row
-      .col-xs-3
-        h4 Bio:              
-        p {{ persona.data.bio }}         
-      .col-xs-9
-        p Order by &nbsp;
-          select(ng-model='repoSortOrder')
-            option(value='+name') By name
-            option(value='-stargazers_count') By stars
-            option(value='+language') By code language
-            option(value='+fork') Is forked?        
-        table.table-striped
-          thead
-            tr
-              th Name                    
-              th Language
-              th Forked?                    
-              th Stars
-          tbody
-            tr(ng-repeat='repo in persona.repos | orderBy:repoSortOrder')
-              td
-                button(class="btn btn-sx", type="button", data-toggle="collapse", data-target="#{{repo.name}}", aria-expanded="false", aria-controls="{{repo.name}}")
-                  i(class="fa fa-info-circle fa-x2", aria-hidden="true") &nbsp;
-                a(href="{{repo.html_url}}") {{ repo.name }}
-                div.collapse(id='{{repo.name}}')
-                  .well {{ repo.description }}
-              td {{ repo.language }}
-              td {{ repo.fork }}
-              td {{ repo.stargazers_count | number }}
-        button.btn.btn-large.btn-danger(type='button', ng-click='showPersons.removePersona($index)') Remove Persona
-        hr
+            a(href='http://{{ persona.data.blog }}') {{ persona.data.blog }}
+          div(ng-if="showPersons.clicked")
+            h5 Email           
+            p
+              a(href='mailto:{{ persona.data.email }}') {{ persona.data.email }}
+          h5 Location            
+          p {{ persona.data.location }}
+      .row
+        hr.col-xs-12
+      .row
+        .col-xs-3
+          h4 Bio:              
+          p {{ persona.data.bio }}         
+        .col-xs-9
+          button(class="btn btn-sx", type="button", data-toggle="collapse", data-target="#{{persona.data.login}}-repos", aria-expanded="false", aria-controls="{{persona.data.login}}-repos")
+            i(class="fa fa-info-circle fa-x2", aria-hidden="true") &nbsp; Repositories
+          br
+          br
+          div.collapse(id='{{persona.data.login}}-repos')
+            .well
+              p Order by &nbsp;
+                select(ng-model='repoSortOrder')
+                  option(value='+name') By name
+                  option(value='-stargazers_count') By stars
+                  option(value='+language') By code language
+                  option(value='+fork') Is forked?        
+              table.table-striped
+                thead
+                  tr
+                    th Name                    
+                    th Language
+                    th Forked?                    
+                    th Stars
+                tbody
+                  tr(ng-repeat='repo in persona.repos | orderBy:repoSortOrder')
+                    td
+                      button(class="btn btn-sx", type="button", data-toggle="collapse", data-target="#{{repo.name}}", aria-expanded="false", aria-controls="{{repo.name}}")
+                        i(class="fa fa-inbox fa-x2", aria-hidden="true") &nbsp;
+                      a(href="{{repo.html_url}}") {{ repo.name }}
+                      div.collapse(id='{{repo.name}}')
+                        .well {{ repo.description }}
+                    td {{ repo.language }}
+                    td {{ repo.fork }}
+                    td {{ repo.stargazers_count | number }}
+              button.btn.btn-large.btn-danger(type='button', ng-click='showPersons.removePersona($index)') Remove Persona
+.container
+  hr.col-xs-12
