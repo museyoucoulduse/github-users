@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha -R spec",
-    "start": "bower install && gulp inject && node index"
+    "start": "node index",
+    "postinstall": "bower install && gulp inject"
   },
   "repository": {
     "type": "git",
