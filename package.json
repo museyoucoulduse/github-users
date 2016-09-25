@@ -2,7 +2,7 @@
   "name": "github-users",
   "version": "0.0.1",
   "engines": {
-    "node": 4.5.0
+    "node": "4.5.0"
   },
   "description": "Find information about particular github user",
   "main": "index.js",

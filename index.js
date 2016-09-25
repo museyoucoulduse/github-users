@@ -25,7 +25,7 @@ app.use('/', router);
 
 var port = process.env.PORT || 5000;
 //var hostname = process.env.IP || 'localhost';
-app.listen(port, hostname, function (err) {
+app.listen(port, function (err) {
   if (err) {
     console.log(err.message);
     process.exit(1);
