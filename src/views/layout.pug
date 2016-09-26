@@ -1,3 +1,4 @@
+- var d = new Date();
 doctype html
 html(ng-app='lol' lang='en')
   head
@@ -25,10 +26,13 @@ html(ng-app='lol' lang='en')
 block title
   title Lots of Lulz
 body
-  .container
+
+  .container-fluid
     block header
-   
-  date
-  p.container Copyrights &copy; Szymon Blasczynski 2016
-    
+  
+  .container-fluid
+    footer.footer 
+      .contianer-fluid
+        span.text-muted Copyrights &copy; Szymon Blasczynski #{d.getFullYear()}
+  
                              

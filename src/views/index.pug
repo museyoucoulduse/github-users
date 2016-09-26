@@ -5,25 +5,31 @@ block title
   
 block header
   .jumbotron
-    h2 Hey, Big Boss!
-    h4 Looking for someone on Github?
+    h2 Hey,&nbsp;
+      u Big Boss!
+    p.lead Looking for someone on Github &nbsp;
+      i(class="fa fa-github fa-x2 danger" aria-hidden="true") &nbsp;
+      i(class="fa fa-github-alt fa-x2 alert" aria-hidden="true") &nbsp;
+      i(class="fa fa-github-square fa-x2 success" aria-hidden="true") &nbsp; ?
+    
   div(ng-controller='PersonaSearchController as person')
   
     div.alert.alert-danger(role="alert", ng-if="person.error")
       p {{person.error}}
-      
+
     .well.well-lg
       form(name="search", ng-submit="person.search()")
         div(class="input-group")
           span(class="input-group-addon", id="basic-addon1") @
           input(type="text", aria-describedby="basic-addon1", class="form-control", required, value="museyoucoulduse", ng-model="person.username")
-          span(class="input-group-addon", id="basic-addon1")
-            i(class="fa fa-search" aria-hidden="true")
+          
         input(type="submit", value="Search for Github user", class='btn btn-large btn-primary fa fa-search' id="search")
+
       button(class="btn btn-success", ng-click="person.hallOfFame()") Hall Of OpenSource Fame &nbsp;
-        i(class="fa fa-birthday-cake" aria-hidden="true")
+        i(class="fa fa-code fa-x2" aria-hidden="true")
+
            
-    hr.col-xs-12
+    hr.col-xs-11
     
     include persona.pug
   

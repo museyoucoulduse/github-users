@@ -15,26 +15,36 @@
         .col-xs-5
           h5 Name              
           p {{ persona.data.name }}
-          #org(ng-if="persona.data.company")
-            h5 Organization
+          .org(ng-if="persona.data.company")
+            h5 Organization &nbsp;
+              i(class="fa fa-institution fa-x2") 
             p {{ persona.data.company}}
-          #freelancer(ng-if="persona.data.company == null")
-            p Freelancer
-          h5 Website
-          p
-            a(href='http://{{ persona.data.blog }}') {{ persona.data.blog }}
-          div(ng-if="showPersons.clicked")
-            h5 Email           
+          .freelancer(ng-if="persona.data.company == null")
+            p Freelancer &nbsp;
+              i(class="fa fa-taxi fa-x2") 
+          .website(ng-if="!(persona.data.blog == null)")
+            h5 Website &nbsp;
+              i(class="fa fa-space-shuttle fa-x2") 
+            p
+              a(href='http://{{ persona.data.blog }}') {{ persona.data.blog }}
+          .email(ng-if="showPersons.clicked")
+            h5 Email &nbsp;
+              i(class="fa fa-envelope fa-x2")            
             p
               a(href='mailto:{{ persona.data.email }}') {{ persona.data.email }}
-          h5 Location            
-          p {{ persona.data.location }}
-          h5 Contrib
-          p {{ persona.data.contributions }}
+          .location(ng-if="!(persona.data.location == null)")
+            h5 Location  
+              i(class="fa fa-home fa-x2")          
+            p {{ persona.data.location }}
+          h5 Github &nbsp;
+            i(class="fa fa-github fa-x2")
+          p 
+            a(href="{{ persona.data.html_url }}") {{ persona.data.html_url }}
+              
       .row
-        hr.col-xs-12
+        hr.col-xs-6
       .row
-        .col-xs-3
+        .col-xs-3(ng-if="!(persona.data.bio == null)")
           h4 Bio:              
           p {{ persona.data.bio }}         
         .col-xs-9
@@ -68,6 +78,7 @@
                     td {{ repo.language }}
                     td {{ repo.fork }}
                     td {{ repo.stargazers_count | number }}
-        button.btn.btn-large.btn-danger(type='button', ng-click='showPersons.removePersona($index)') Remove Persona
+        button.btn.btn-large.btn-danger(type='button', ng-click='showPersons.removePersona($index)') Remove Persona &nbsp;
+          i(class=" fa fa-remove fa-x2")
 .container
-  hr.col-xs-12
+  hr.col-xs-11

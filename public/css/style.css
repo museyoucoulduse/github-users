@@ -10,6 +10,23 @@ hr {
   color: #FFF;
   
 }
-.jumbotron h4 {
+
+.danger  {
+color: yellow;
+  }
+.alert {
+color: red;
+  }
+.success {
+color: limegreen;
+  }
+.jumbotron p {
     color: #368;
   }
+.container-fluid {
+  background-color: #FA4;
+}
+.footer {
+    height: 30px; /* .push must be the same height as .footer */
+  text-align: center;
+}
